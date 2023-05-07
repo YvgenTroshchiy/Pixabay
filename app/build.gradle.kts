@@ -24,8 +24,7 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
         }
     }
@@ -48,7 +47,7 @@ dependencies {
     val lifecycle_version = "2.6.1"
     val arch_version = "2.2.0"
     // ViewModel
-    // Otherwise conflict in the paging library
+    // Otherwise conflict in the paging library (androidx.lifecycle.ViewModelLazy couple versions)
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
 
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
