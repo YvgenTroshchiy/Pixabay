@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Pixabay</string>
+    <string name="image">image</string>
+    <string name="likes">%d likes</string>
 </resources>

@@ -1,7 +1,8 @@
-package com.troshchii.pixabay
+package com.troshchii.pixabay.ui.list
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.troshchii.pixabay.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
