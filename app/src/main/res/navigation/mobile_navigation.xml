@@ -9,6 +9,20 @@
         android:id="@+id/mainFragment"
         android:name="com.troshchii.pixabay.ui.list.MainFragment"
         android:label="MainFragment"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.troshchii.pixabay.ui.details.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details">
+        <argument
+            android:name="imageUrl"
+            app:argType="string" />
+    </fragment>
 
 </navigation>

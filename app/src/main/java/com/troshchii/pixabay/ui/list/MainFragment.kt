@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import com.troshchii.pixabay.databinding.FragmentMainBinding
 import com.troshchii.pixabay.utils.viewBinding
@@ -21,7 +22,12 @@ class MainFragment : Fragment() {
 
     private val viewModel by viewModels<MainViewModel>()
     private var binding: FragmentMainBinding by viewBinding()
-    private val adapter = HitsAdapter()
+    private val adapter = HitsAdapter(::openDetailsScreen)
+
+    private fun openDetailsScreen(url: String) {
+        val action = MainFragmentDirections.toDetailsFragment(url)
+        findNavController().navigate(action)
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentMainBinding.inflate(inflater, container, false)

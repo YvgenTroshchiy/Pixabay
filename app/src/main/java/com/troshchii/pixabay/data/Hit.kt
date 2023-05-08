@@ -3,6 +3,7 @@ package com.troshchii.pixabay.data
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
+// TODO: Add full url for details
 @Parcelize
 data class Hit(
     val id: Int,

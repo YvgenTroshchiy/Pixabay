@@ -10,11 +10,11 @@ import com.troshchii.pixabay.R
 import com.troshchii.pixabay.data.Hit
 import com.troshchii.pixabay.databinding.ListItemBinding
 
-class HitsAdapter : PagingDataAdapter<Hit, ViewHolder>(ItemsDiffCallback()) {
+class HitsAdapter(private val itemClick: (String) -> Unit) : PagingDataAdapter<Hit, ViewHolder>(ItemsDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ViewHolder(binding)
+        return ViewHolder(itemClick, binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -22,9 +22,13 @@ class HitsAdapter : PagingDataAdapter<Hit, ViewHolder>(ItemsDiffCallback()) {
     }
 }
 
-class ViewHolder(private val binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root) {
+class ViewHolder(
+    private val itemClick: (String) -> Unit, private val binding: ListItemBinding
+) : RecyclerView.ViewHolder(binding.root) {
     fun bind(hit: Hit) {
         val context = binding.image.context
+
+        binding.root.setOnClickListener { itemClick(hit.previewURL) }
 
         Glide.with(context)
             .load(hit.previewURL)
